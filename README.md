@@ -47,6 +47,7 @@ Required on your laptop:
 | Modern browser | Endor Labs UI and local apps |
 | Terminal access | Run clone / compose commands |
 | At least 8 GB available memory | Lab apps and supporting services |
+| **endorctl** (**optional**) | Only if instructors include CLI exercises — see [Optional: endorctl CLI prep](#optional-endorctl-cli-prep) |
 
 **Node.js and npm** are **not required** if you use the DVWS Node Docker Compose path. They are only needed for a manual DVWS Node setup; that repository documents Node 20.x/22.x and npm 10.x as tested versions. See [DVWS Node setup](https://github.com/snoopysecurity/dvws-node).
 
@@ -114,6 +115,65 @@ If the session includes CI scanning, organizers should provide the preconfigured
 
 ---
 
+## Optional: endorctl CLI prep
+
+The steps above cover UI- and GitHub App–based lab prep. Installing and authenticating the **endorctl** CLI is **optional** unless your instructors explicitly include CLI scans or exercises. Skip this section if your session is UI-only.
+
+When a session does use the CLI, complete the following before the lab:
+
+### Install endorctl
+
+Install with one of the supported methods, then confirm the binary is available:
+
+```bash
+# macOS / Linux (Homebrew)
+brew install endorlabs/tap/endorctl
+
+# macOS / Linux / Windows (npm)
+npm install -g endorctl
+
+# Then verify
+endorctl --version
+```
+
+You can also download the platform binary directly (Linux, macOS, Windows) from the Endor Labs API download endpoints. For EU tenants, use `https://api.eu.endorlabs.com` instead of `https://api.endorlabs.com`. Full install options are in the [endorctl CLI documentation](https://docs.endorlabs.com/setup-deployment/cli).
+
+### Authenticate
+
+Authenticate with the same identity provider or credentials your instructors provide for the Endor Labs tenant. Interactive login via `endorctl init` is the usual workstation path:
+
+```bash
+# Examples — use the auth mode your session uses
+endorctl init --auth-mode=github
+# or: google | gitlab | sso (SSO also needs --auth-tenant=<tenant>)
+```
+
+Alternatively, if instructors provide API credentials, set:
+
+```bash
+export ENDOR_API_CREDENTIALS_KEY=<api-key>
+export ENDOR_API_CREDENTIALS_SECRET=<api-key-secret>
+export ENDOR_NAMESPACE=<tenant-namespace>
+```
+
+Do not use personal or production API keys for certification labs. Prefer credentials or scopes provided for the session namespace.
+
+### Configure and verify
+
+Confirm you are targeting the assigned namespace and that authentication works:
+
+```bash
+# Optional: persist namespace (and other CLI settings) for later commands
+echo "ENDOR_NAMESPACE: <tenant-namespace>" >> ~/.endorctl/config.yaml
+
+# Verify auth / access (empty JSON is OK if the namespace has no projects yet)
+endorctl api list -r Project --page-size=1
+```
+
+If your instructors ask you to run a local CLI scan during the session, wait for their exact `endorctl scan` flags and repository path—do not invent scan targets against production or unrelated repositories.
+
+---
+
 ## Safety requirements
 
 - Run lab applications locally or in the isolated session environment only.
@@ -163,3 +223,4 @@ For instructors and partner engineering preparing a certification or workshop se
 - [Endor Labs GitHub App](https://docs.endorlabs.com/setup-deployment/scm-integrations/github-app/)
 - [Endor Labs GitHub Cloud App Pro](https://docs.endorlabs.com/setup-deployment/scm-integrations/github-app)
 - [Endor Labs GitHub Actions integration](https://docs.endorlabs.com/setup-deployment/ci-cd/scan-with-github-actions/)
+- [endorctl CLI](https://docs.endorlabs.com/setup-deployment/cli)
