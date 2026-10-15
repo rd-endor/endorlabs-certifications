@@ -2,22 +2,28 @@
 
 Become an AppSec expert with Endor Labs.
 
-This repository helps attendees prepare for **Endor Labs certification** sessions and guided labs. Use it as a pre-work checklist before any instructor-led or self-paced certification lab that uses Endor Labs with intentionally vulnerable sample applications.
+This repository helps **partners** prepare for Endor Labs. The primary path is simple:
+
+1. Get easy access to an Endor Labs tenant
+2. Scan sample vulnerable repositories
+3. Explore the Endor Labs platform UI
+
+Deeper hands-on work—local lab apps, PR trigger tests, and optional **endorctl** CLI prep—is aimed at more technical partners and partner SAs. Use the sections below as a checklist when your session includes those steps.
 
 Exact session details (tenant URL, namespace, GitHub organization or assigned repository, and whether the GitHub App is organizer-managed) come from your instructors. Follow those instructions when they differ from the examples below.
 
 ---
 
-## Lab model (typical)
+## Sample repos and lab model
 
-Many certification labs ask attendees to work with GitHub repositories that contain intentionally vulnerable applications and connect those repositories to an Endor Labs GitHub App installation managed by the organizers.
+Partners typically connect GitHub repositories that contain intentionally vulnerable applications to an Endor Labs GitHub App installation managed by the organizers, then review findings in the platform UI.
 
 Common reference applications used in prep and labs (these are **GitHub repositories**, not GitHub Apps):
 
 - [OWASP VulnerableApp](https://github.com/SasanLabs/VulnerableApp)
 - [DVWS Node](https://github.com/snoopysecurity/dvws-node)
 
-For **scanning practice** during prep and certification work, intentionally vulnerable sample repositories are also available under the [`endor-partners`](https://github.com/endor-partners) GitHub account. Public examples include:
+For **scanning practice**, intentionally vulnerable sample repositories are available under the [`endor-partners`](https://github.com/endor-partners) GitHub account. Public examples include:
 
 - [dvws-node-endor-partners](https://github.com/endor-partners/dvws-node-endor-partners)
 - [hedge-fund-vibes-partners](https://github.com/endor-partners/hedge-fund-vibes-partners)
@@ -27,7 +33,7 @@ Use only the repository your instructors assign (or a personal fork of a lab rep
 
 ---
 
-## Required attendee preparation
+## Required partner preparation
 
 ### 1. Confirm account and access
 
@@ -123,7 +129,7 @@ If the session includes CI scanning, organizers should provide the preconfigured
 
 ## Optional: endorctl CLI prep
 
-The steps above cover UI- and GitHub App–based lab prep. Installing and authenticating the **endorctl** CLI is **optional** unless your instructors explicitly include CLI scans or exercises. Skip this section if your session is UI-only.
+Most partners only need tenant access, sample-repo scans, and the platform UI. Installing and authenticating the **endorctl** CLI is **optional** and aimed at more technical partners and partner SAs—skip this section unless your instructors include CLI scans or exercises.
 
 When a session does use the CLI, complete the following before the lab:
 
@@ -195,13 +201,13 @@ DVWS Node is intentionally vulnerable training software and must remain isolated
 
 ## Definition of ready
 
-You are ready for the certification lab when you can:
+You are ready when you can:
 
-- Start at least one vulnerable application locally (or use a hosted lab provided by instructors).
-- Access the assigned GitHub repository and open a pull request.
-- Sign in to the Endor Labs namespace.
-- See a completed Endor Labs scan for the lab repository.
-- Navigate from a finding to its evidence and recommended next step.
+- Sign in to the Endor Labs tenant and namespace provided for the session.
+- Access an assigned or sample vulnerable repository (for example under [`endor-partners`](https://github.com/endor-partners)).
+- See a completed Endor Labs scan and explore findings in the platform UI.
+
+For deeper hands-on sessions, also confirm you can start at least one vulnerable application locally (or use a hosted lab) and open a pull request that triggers an Endor Labs scan.
 
 ---
 
