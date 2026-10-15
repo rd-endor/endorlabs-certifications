@@ -17,7 +17,13 @@ Common reference applications used in prep and labs (these are **GitHub reposito
 - [OWASP VulnerableApp](https://github.com/SasanLabs/VulnerableApp)
 - [DVWS Node](https://github.com/snoopysecurity/dvws-node)
 
-Use only the repository your instructors assign (or a personal fork of a lab repo)—never a production repository.
+For **scanning practice** during prep and certification work, intentionally vulnerable sample repositories are also available under the [`endor-partners`](https://github.com/endor-partners) GitHub account. Public examples include:
+
+- [dvws-node-endor-partners](https://github.com/endor-partners/dvws-node-endor-partners)
+- [hedge-fund-vibes-partners](https://github.com/endor-partners/hedge-fund-vibes-partners)
+- [vuln-spring-boot-endor-partners](https://github.com/endor-partners/vuln-spring-boot-endor-partners)
+
+Use only the repository your instructors assign (or a personal fork of a lab repo)—never a production repository. Organizers will share invitations or access when a private sample repo is required.
 
 ---
 
