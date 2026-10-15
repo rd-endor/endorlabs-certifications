@@ -2,9 +2,94 @@
 
 Become an AppSec expert with Endor Labs.
 
-This repository helps attendees prepare for **Endor Labs certification** sessions and guided labs. Use it as a pre-work checklist before any instructor-led or self-paced certification lab that uses Endor Labs with intentionally vulnerable sample applications.
+This repository helps attendees and **partners** prepare for **Endor Labs certification** sessions and guided labs. Use it as a pre-work checklist before any instructor-led or self-paced certification lab that uses Endor Labs with intentionally vulnerable sample applications.
 
 Exact session details (tenant URL, namespace, GitHub organization or assigned repository, and whether the GitHub App is organizer-managed) come from your instructors. Follow those instructions when they differ from the examples below.
+
+---
+
+## Partner certification and Endor Labs access
+
+Partners complete the same lab preparation as other attendees, plus an explicit **Endor Labs access** step so they can sign in to the certification tenant and work in the assigned namespace.
+
+### What partners receive
+
+| Deliverable | Purpose |
+| --- | --- |
+| Certification session invite | Schedule, lab model, and instructor contacts |
+| Endor Labs tenant / namespace | Workspace for scans, findings, and PR exercises |
+| Email invitation to the tenant | Sign-in link so the partner can authenticate with their IdP |
+| Assigned role in that namespace | Least-privilege access for lab work (typically Read-Only or Code Scanner) |
+| GitHub org or lab repository access | Branch, PR, and scan trigger exercises |
+
+Partners should **not** install the Endor Labs GitHub App into customer or production organizations for certification. Organizers manage App installation on lab repositories only.
+
+### Partner: accept Endor Labs access
+
+Before the certification lab:
+
+1. Watch for the Endor Labs invitation email from the organizers (use the **primary** email on your GitHub or GitLab account if that is your IdP).
+2. Open the invitation link and sign in with the identity provider your session uses (GitHub, Google, GitLab, or SSO).
+3. Confirm you land in the **tenant and namespace** named in the session instructions.
+4. Verify you can open Projects, view at least one lab project, and open a finding.
+5. If the invitation is missing, expired, or lands in the wrong namespace, contact the session organizers—do not create your own tenant for certification.
+
+After you accept an invitation, Endor Labs creates an authorization policy for your selected identity provider. See [Manage user invitations](https://docs.endorlabs.com/platform-administration/rbac/invitations).
+
+### Organizer: certify partners and grant Endor Labs access
+
+Complete these steps **before** sending partner certification invites so every partner can access Endor Labs on day one.
+
+#### 1. Provision a partner (or session) namespace
+
+1. In the certification tenant, create a dedicated **child namespace** for the partner cohort or session (fully qualified names look like `tenant.partners.session-name`).
+2. Scope GitHub App installation, baseline scans, and PR checks to that namespace only.
+3. Do not share production customer namespaces with certification partners.
+
+See [Set up namespaces](https://docs.endorlabs.com/platform-administration/namespaces).
+
+#### 2. Invite partners to Endor Labs
+
+For each partner (or a comma-separated list):
+
+1. Sign in as a tenant admin.
+2. Open **User menu → Settings → Access Control → Invitations**.
+3. Click **Invite your team**.
+4. Enter partner email addresses (primary email for GitHub/GitLab IdP users).
+5. Send the invitations and confirm they appear as pending until accepted.
+
+Document the tenant URL, fully qualified namespace, and expected role in the partner welcome note.
+
+#### 3. Assign the right role
+
+Use least privilege for certification:
+
+| Role | When to use for partners |
+| --- | --- |
+| **Read-Only** | UI walkthroughs, finding review, evidence navigation |
+| **Code Scanner** | Partners who run `endorctl scan` or CI scan exercises |
+| **Policy Editor** | Only if the session includes policy authoring |
+| **Admin** | Organizers and lab operators only—not default for partners |
+
+Configure roles with **Access Control → Auth Policy** when you need claim-based or namespace-scoped rules instead of (or in addition to) email invitations. See [Authorization policies](https://docs.endorlabs.com/platform-administration/rbac/authorization-policies) and [Authorization roles](https://docs.endorlabs.com/platform-administration/rbac/authorization-roles).
+
+#### 4. Confirm access with a non-admin partner account
+
+Before the session:
+
+- Accept one invitation with a test partner identity.
+- Sign in to the assigned namespace and open a lab project with findings.
+- Create a test branch and pull request; confirm the PR scan result appears.
+- Revoke or expire test access if it should not remain after validation.
+
+#### 5. Partner certification readiness gate
+
+Mark a partner **ready to certify** only when they have:
+
+- Accepted the Endor Labs invitation and can sign in.
+- Access to the correct namespace (not the parent tenant alone, if a child namespace is used).
+- GitHub access to the assigned lab repository.
+- Completed the attendee [Definition of ready](#definition-of-ready) checklist below.
 
 ---
 
@@ -33,6 +118,7 @@ Before the session:
 - Confirm you can create a branch and open a pull request in your assigned lab repository.
 - Be prepared to authorize the Endor Labs GitHub App if prompted by the session instructions.
 - Confirm you can sign in to the Endor Labs tenant and namespace provided by the instructors.
+- **Partners:** accept the Endor Labs email invitation and complete [Partner: accept Endor Labs access](#partner-accept-endor-labs-access) before the lab.
 
 The Endor Labs GitHub App can selectively scan repositories for SCA, secrets, RSPM, and GitHub Actions. Organizers typically install and authorize the App centrally; attendees should not independently install it into unrelated personal or company organizations. See the [Endor Labs GitHub App documentation](https://docs.endorlabs.com/setup-deployment/scm-integrations/github-app/).
 
@@ -193,7 +279,7 @@ You are ready for the certification lab when you can:
 
 - Start at least one vulnerable application locally (or use a hosted lab provided by instructors).
 - Access the assigned GitHub repository and open a pull request.
-- Sign in to the Endor Labs namespace.
+- Sign in to the Endor Labs namespace (partners: after accepting the tenant invitation).
 - See a completed Endor Labs scan for the lab repository.
 - Navigate from a finding to its evidence and recommended next step.
 
@@ -207,10 +293,13 @@ For instructors and partner engineering preparing a certification or workshop se
 - When using DVWS, use `dvws-node` as the DVWS implementation.
 - Create a dedicated GitHub organization or workshop repository space.
 - Install the Endor Labs GitHub Cloud App Pro centrally and scope it only to lab repositories.
-- Create a dedicated Endor Labs child namespace for the session.
+- Create a dedicated Endor Labs child namespace for the session (or partner cohort).
+- **Invite every partner (and attendee) to that namespace** via Access Control → Invitations; include tenant URL, namespace, and role in the welcome note.
+- Assign least-privilege roles (Read-Only or Code Scanner for most partners; Admin only for organizers).
 - Run baseline scans for lab repositories and confirm findings are populated.
 - Configure PR scans and test at least one pull request per repository.
-- Confirm the namespace, App installation, and repository permissions with a non-admin test account.
+- Confirm the namespace, App installation, repository permissions, and **invitation acceptance** with a non-admin partner or test account.
+- Track which partners have accepted Endor Labs access; re-send or fix invitations before the session starts.
 - Provide a fallback hosted lab or pre-scanned screenshots for attendees who cannot run Docker locally.
 - Prepare a reset procedure and a support contact for GitHub, Docker, and Endor Labs access issues.
 
@@ -224,3 +313,8 @@ For instructors and partner engineering preparing a certification or workshop se
 - [Endor Labs GitHub Cloud App Pro](https://docs.endorlabs.com/setup-deployment/scm-integrations/github-app)
 - [Endor Labs GitHub Actions integration](https://docs.endorlabs.com/setup-deployment/ci-cd/scan-with-github-actions/)
 - [endorctl CLI](https://docs.endorlabs.com/setup-deployment/cli)
+- [Manage user invitations](https://docs.endorlabs.com/platform-administration/rbac/invitations)
+- [Authorization policies](https://docs.endorlabs.com/platform-administration/rbac/authorization-policies)
+- [Authorization roles](https://docs.endorlabs.com/platform-administration/rbac/authorization-roles)
+- [Set up namespaces](https://docs.endorlabs.com/platform-administration/namespaces)
+- [Endor Labs partnerships](https://www.endorlabs.com/partnerships)
