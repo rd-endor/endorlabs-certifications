@@ -8,6 +8,20 @@ Exact session details (tenant URL, namespace, GitHub organization or assigned re
 
 ---
 
+## Partner hands-on access
+
+Partners get hands-on Endor Labs experience in the dedicated **`partner-nfr`** tenant (not a customer or production tenant).
+
+**How access is granted (historical model):**
+
+1. Collect the partner’s work **email** and/or **GitHub handle**.
+2. Invite them to the `partner-nfr` tenant (Settings → Access Control → Invitations, or an auth policy keyed to that email / GitHub identity).
+3. Confirm they can sign in to `partner-nfr` and open Projects / findings.
+
+Keep certification content in this repo light; use `partner-nfr` for platform practice. Lab repos and GitHub App install stay organizer-managed.
+
+---
+
 ## Lab model (typical)
 
 Many certification labs ask attendees to work with GitHub repositories that contain intentionally vulnerable applications and connect those repositories to an Endor Labs GitHub App installation managed by the organizers.
@@ -32,7 +46,7 @@ Before the session:
 - Accept the invitation to the session GitHub organization or assigned repository (when provided).
 - Confirm you can create a branch and open a pull request in your assigned lab repository.
 - Be prepared to authorize the Endor Labs GitHub App if prompted by the session instructions.
-- Confirm you can sign in to the Endor Labs tenant and namespace provided by the instructors.
+- Confirm you can sign in to the Endor Labs tenant and namespace provided by the instructors (partners: usually `partner-nfr`).
 
 The Endor Labs GitHub App can selectively scan repositories for SCA, secrets, RSPM, and GitHub Actions. Organizers typically install and authorize the App centrally; attendees should not independently install it into unrelated personal or company organizations. See the [Endor Labs GitHub App documentation](https://docs.endorlabs.com/setup-deployment/scm-integrations/github-app/).
 
@@ -208,6 +222,7 @@ For instructors and partner engineering preparing a certification or workshop se
 - Create a dedicated GitHub organization or workshop repository space.
 - Install the Endor Labs GitHub Cloud App Pro centrally and scope it only to lab repositories.
 - Create a dedicated Endor Labs child namespace for the session.
+- For partners: invite them to the `partner-nfr` tenant by email and/or GitHub handle before the session.
 - Run baseline scans for lab repositories and confirm findings are populated.
 - Configure PR scans and test at least one pull request per repository.
 - Confirm the namespace, App installation, and repository permissions with a non-admin test account.
@@ -224,3 +239,4 @@ For instructors and partner engineering preparing a certification or workshop se
 - [Endor Labs GitHub Cloud App Pro](https://docs.endorlabs.com/setup-deployment/scm-integrations/github-app)
 - [Endor Labs GitHub Actions integration](https://docs.endorlabs.com/setup-deployment/ci-cd/scan-with-github-actions/)
 - [endorctl CLI](https://docs.endorlabs.com/setup-deployment/cli)
+- [Manage user invitations](https://docs.endorlabs.com/platform-administration/rbac/invitations)
