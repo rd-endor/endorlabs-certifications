@@ -2,15 +2,29 @@
 
 Become an AppSec expert with Endor Labs.
 
-This repository helps **partners** prepare for Endor Labs. The primary path is simple:
+This repository helps **partners**—including **VARs (value-added resellers)**, who may not be deeply technical—prepare for Endor Labs. The primary path is simple and **platform / email first** (not CLI-first):
 
-1. Get easy access to an Endor Labs tenant
-2. Scan sample vulnerable repositories
+1. Get easy access to a dedicated Endor Labs tenant (organizer invitation by email)
+2. Scan sample vulnerable repositories (for example under [`endor-partners`](https://github.com/endor-partners))
 3. Explore the Endor Labs platform UI
 
 Deeper hands-on work—local lab apps, PR trigger tests, and optional **endorctl** CLI prep—is aimed at more technical partners and partner SAs. Use the sections below as a checklist when your session includes those steps.
 
 Exact session details (tenant URL, namespace, GitHub organization or assigned repository, and whether the GitHub App is organizer-managed) come from your instructors. Follow those instructions when they differ from the examples below.
+
+---
+
+## Partner / VAR access
+
+Preferred access for partners and VARs is via **email invitation** on the Endor Labs platform into a **dedicated tenant** (not a customer or production tenant). Organizers send the invitation; partners accept it and sign in with the identity tied to that email. Do not assume CLI or GitHub-first setup for this audience.
+
+After access:
+
+1. Open the assigned tenant / namespace in the platform UI.
+2. Review scanned sample repositories (for example under [`endor-partners`](https://github.com/endor-partners)).
+3. Explore projects, findings, and related UI views.
+
+Keep this guide light for most partners. Optional endorctl and deeper lab steps below are for technical partners and partner SAs when instructors include them.
 
 ---
 
@@ -39,12 +53,13 @@ Use only the repository your instructors assign (or a personal fork of a lab rep
 
 Before the session:
 
-- Have an active [GitHub.com](https://github.com) account with MFA enabled.
-- Sign in to GitHub and confirm you can access repositories, branches, and pull requests.
+- Accept the Endor Labs **platform invitation** sent to your work email for the dedicated partner / VAR tenant (preferred path).
+- Confirm you can sign in to that tenant and open the assigned namespace in the UI.
+- Have an active [GitHub.com](https://github.com) account with MFA enabled when the session uses GitHub-connected sample repos or PR exercises.
+- Sign in to GitHub and confirm you can access repositories, branches, and pull requests (when required for your session).
 - Accept the invitation to the session GitHub organization or assigned repository (when provided).
-- Confirm you can create a branch and open a pull request in your assigned lab repository.
+- Confirm you can create a branch and open a pull request in your assigned lab repository (when the session includes that step).
 - Be prepared to authorize the Endor Labs GitHub App if prompted by the session instructions.
-- Confirm you can sign in to the Endor Labs tenant and namespace provided by the instructors.
 
 The Endor Labs GitHub App can selectively scan repositories for SCA, secrets, RSPM, and GitHub Actions. Organizers typically install and authorize the App centrally; attendees should not independently install it into unrelated personal or company organizations. See the [Endor Labs GitHub App documentation](https://docs.endorlabs.com/setup-deployment/scm-integrations/github-app/).
 
@@ -203,11 +218,11 @@ DVWS Node is intentionally vulnerable training software and must remain isolated
 
 You are ready when you can:
 
-- Sign in to the Endor Labs tenant and namespace provided for the session.
+- Sign in to the dedicated Endor Labs tenant (after accepting the organizer’s email invitation) and open the assigned namespace.
 - Access an assigned or sample vulnerable repository (for example under [`endor-partners`](https://github.com/endor-partners)).
 - See a completed Endor Labs scan and explore findings in the platform UI.
 
-For deeper hands-on sessions, also confirm you can start at least one vulnerable application locally (or use a hosted lab) and open a pull request that triggers an Endor Labs scan.
+For deeper hands-on sessions (technical partners / partner SAs), also confirm you can start at least one vulnerable application locally (or use a hosted lab) and open a pull request that triggers an Endor Labs scan.
 
 ---
 
@@ -220,6 +235,7 @@ For instructors and partner engineering preparing a certification or workshop se
 - Create a dedicated GitHub organization or workshop repository space.
 - Install the Endor Labs GitHub Cloud App Pro centrally and scope it only to lab repositories.
 - Create a dedicated Endor Labs child namespace for the session.
+- For partners / VARs: invite them by **email** via the Endor Labs platform into the dedicated tenant before the session (preferred over CLI-first onboarding).
 - Run baseline scans for lab repositories and confirm findings are populated.
 - Configure PR scans and test at least one pull request per repository.
 - Confirm the namespace, App installation, and repository permissions with a non-admin test account.
@@ -236,3 +252,4 @@ For instructors and partner engineering preparing a certification or workshop se
 - [Endor Labs GitHub Cloud App Pro](https://docs.endorlabs.com/setup-deployment/scm-integrations/github-app)
 - [Endor Labs GitHub Actions integration](https://docs.endorlabs.com/setup-deployment/ci-cd/scan-with-github-actions/)
 - [endorctl CLI](https://docs.endorlabs.com/setup-deployment/cli)
+- [Manage user invitations](https://docs.endorlabs.com/platform-administration/rbac/invitations)
