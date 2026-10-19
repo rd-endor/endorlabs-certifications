@@ -1,22 +1,25 @@
-# Endor Labs Certifications
+# Endor Labs Certifications — Partners Technical Track
 
 Become an AppSec expert with Endor Labs.
 
-This repository helps **partners** prepare for Endor Labs. The primary path is simple:
+This repository is the prep guide for the **Partners — Technical Track** only. It is for technical partners and partner SAs who need hands-on practice with **SCM integrations**—especially connecting source control (for example the **Endor Labs GitHub App**) to Endor Labs—and related technical integration topics.
 
-1. Get easy access to an Endor Labs tenant
-2. Scan sample vulnerable repositories
-3. Explore the Endor Labs platform UI
+It is **not** the primary path for VAR / email-invite or non-technical partner onboarding. That audience and access model belong elsewhere.
 
-Deeper hands-on work—local lab apps, PR trigger tests, and optional **endorctl** CLI prep—is aimed at more technical partners and partner SAs. Use the sections below as a checklist when your session includes those steps.
+## What you will practice
+
+1. Connect sample repositories to Endor Labs through an SCM integration (GitHub App ↔ Endor Labs)
+2. Scan intentionally vulnerable sample repos (for example under [`endor-partners`](https://github.com/endor-partners))
+3. Explore findings and related views in the Endor Labs platform UI
+4. Complete hands-on technical prep as your session requires—local lab apps, PR trigger tests, and optional **endorctl** CLI work
 
 Exact session details (tenant URL, namespace, GitHub organization or assigned repository, and whether the GitHub App is organizer-managed) come from your instructors. Follow those instructions when they differ from the examples below.
 
 ---
 
-## Sample repos and lab model
+## SCM integration lab model
 
-Partners typically connect GitHub repositories that contain intentionally vulnerable applications to an Endor Labs GitHub App installation managed by the organizers, then review findings in the platform UI.
+Technical Track sessions center on how SCM integrations work with Endor Labs. Partners typically connect GitHub repositories that contain intentionally vulnerable applications to an Endor Labs GitHub App installation managed by the organizers, then review findings in the platform UI.
 
 Common reference applications used in prep and labs (these are **GitHub repositories**, not GitHub Apps):
 
@@ -33,7 +36,7 @@ Use only the repository your instructors assign (or a personal fork of a lab rep
 
 ---
 
-## Required partner preparation
+## Required Technical Track preparation
 
 ### 1. Confirm account and access
 
@@ -101,7 +104,7 @@ Confirm that the application/API starts successfully. DVWS Node uses Docker Comp
 
 The two lab applications may attempt to use overlapping ports. Validate them one at a time unless organizers provide port mappings or a hosted lab environment.
 
-### 5. Verify Endor Labs access
+### 5. Verify Endor Labs access and SCM-connected scans
 
 Before the session, you should be able to:
 
@@ -129,7 +132,7 @@ If the session includes CI scanning, organizers should provide the preconfigured
 
 ## Optional: endorctl CLI prep
 
-Most partners only need tenant access, sample-repo scans, and the platform UI. Installing and authenticating the **endorctl** CLI is **optional** and aimed at more technical partners and partner SAs—skip this section unless your instructors include CLI scans or exercises.
+Installing and authenticating the **endorctl** CLI is **optional** for Technical Track prep—complete this section when your instructors include CLI scans or exercises. Core Technical Track work still centers on SCM integration (GitHub App), sample-repo scans, platform UI, and the hands-on steps above.
 
 When a session does use the CLI, complete the following before the lab:
 
@@ -201,19 +204,19 @@ DVWS Node is intentionally vulnerable training software and must remain isolated
 
 ## Definition of ready
 
-You are ready when you can:
+You are ready for the Partners Technical Track when you can:
 
 - Sign in to the Endor Labs tenant and namespace provided for the session.
-- Access an assigned or sample vulnerable repository (for example under [`endor-partners`](https://github.com/endor-partners)).
+- Access an assigned or sample vulnerable repository connected through the session SCM integration (for example under [`endor-partners`](https://github.com/endor-partners)).
 - See a completed Endor Labs scan and explore findings in the platform UI.
-
-For deeper hands-on sessions, also confirm you can start at least one vulnerable application locally (or use a hosted lab) and open a pull request that triggers an Endor Labs scan.
+- Start at least one vulnerable application locally (or use a hosted lab) when your session includes that step.
+- Open a pull request that triggers an Endor Labs scan when your session includes PR exercises.
 
 ---
 
 ## Organizer readiness checklist
 
-For instructors and partner engineering preparing a certification or workshop session, complete the following before attendee invitations go out:
+For instructors and partner engineering preparing a **Partners Technical Track** session, complete the following before attendee invitations go out:
 
 - Pin tested commits or release versions for lab repositories.
 - When using DVWS, use `dvws-node` as the DVWS implementation.
